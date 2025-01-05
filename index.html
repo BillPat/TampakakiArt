@@ -3,24 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ανακαλύψτε μοναδικούς πίνακες τέχνης">
-    <title>My Art Gallery</title>
+    <meta name="description" content="Online Gallery του Καλλιτέχνη">
+    <title>Online Art Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            margin: 10px 0;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            display: block;
+        }
+        .art-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .art-item {
+            width: 200px;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Καλωσορίσατε στη συλλογή μου!</h1>
-    <p>Εδώ θα βρείτε αυθεντικούς πίνακες τέχνης για αγορά.</p>
+    <header>
+        <h1>Online Art Gallery</h1>
+        <p>Ανακαλύψτε μοναδικούς πίνακες τέχνης από τον [Όνομα Καλλιτέχνη].</p>
+    </header>
 
-    <!-- PayPal Button Container -->
-    <div id="paypal-container"></div>
+    <section>
+        <h2>Σχετικά με τον Καλλιτέχνη</h2>
+        <p>Ο [Όνομα Καλλιτέχνη] έχει δημιουργήσει έργα που έχουν εκτεθεί διεθνώς, με πολλές διακρίσεις και βραβεία.</p>
+    </section>
 
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAABvJg35BKVHoO41rD8mdvaGVh0D0qiD2HgcsBKXKDRtu3BPuqv92LlCQExISRC_Kr5727RCyqYym7ZwA&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
-    
-    <!-- Render PayPal Button -->
-    <script>
-        paypal.HostedButtons({
-            hostedButtonId: "G2BHTYHF4ASE2", // Βεβαιώσου ότι το ID είναι σωστό
-        }).render("#paypal-container"); // Εμφάνιση του κουμπιού στο container
-    </script>
+    <section>
+        <h2>Πρόσφατες Εκθέσεις</h2>
+        <div class="gallery">
+            <img src="exhibition1.jpg" alt="Έκθεση 1">
+            <p>Διεθνής Έκθεση 2025 - Βραβείο Καλύτερου Πίνακα</p>
+            <img src="exhibition2.jpg" alt="Έκθεση 2">
+            <p>Ετήσια Έκθεση Τέχνης - Παρουσίαση Κορυφαίων Έργων</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Πρόσφατα Έργα</h2>
+        <div class="art-grid">
+            <div class="art-item">
+                <img src="painting1.jpg" alt="Πίνακας 1">
+                <p>Πίνακας 1 - 200€</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="XXXXXXXXXXXXXX">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Buy Now">
+                </form>
+            </div>
+            <div class="art-item">
+                <img src="painting2.jpg" alt="Πίνακας 2">
+                <p>Πίνακας 2 - 300€</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="XXXXXXXXXXXXXX">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Buy Now">
+                </form>
+            </div>
+            <div class="art-item">
+                <img src="painting3.jpg" alt="Πίνακας 3">
+                <p>Πίνακας 3 - 250€</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="XXXXXXXXXXXXXX">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Buy Now">
+                </form>
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="all-paintings.html">Show More</a>
+        </div>
+    </section>
 </body>
 </html>
