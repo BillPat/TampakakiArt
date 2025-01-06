@@ -1,10 +1,11 @@
 const paintings = [
     { id: 1, name: "Painting 1", price: 100, image: "https://via.placeholder.com/200" },
     { id: 2, name: "Painting 2", price: 150, image: "https://via.placeholder.com/200" },
+    { id: 3, name: "Painting 3", price: 200, image: "https://via.placeholder.com/200" },
 ];
 
 let selectedPainting = null;
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = [];
 
 // Open modal
 function openModal(id) {
@@ -27,7 +28,6 @@ function openModal(id) {
         onApprove: (data, actions) => {
             return actions.order.capture().then(details => {
                 alert(`Transaction completed by ${details.payer.name.given_name}`);
-                addToCart();
                 closeModal();
             });
         },
@@ -41,23 +41,21 @@ function closeModal() {
 }
 
 // Add to cart
-function addToCart() {
-    cart.push(selectedPainting);
+function addToCart(id) {
+    const painting = paintings.find(p => p.id === id);
+    cart.push(painting);
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
-    alert(`${selectedPainting.name} added to cart!`);
+    alert(`${painting.name} added to cart!`);
 }
 
 // Update cart UI
 function updateCart() {
-    const cartElement = document.getElementById("cart-count");
-    cartElement.textContent = cart.length;
-    if (cart.length > 0) {
-        document.querySelector("#cart-icon").classList.add("visible");
-    }
+    const cartCount = document.getElementById("cart-count");
+    cartCount.textContent = cart.length;
 }
 
-// Initialize cart on page load
+// Initialize cart
 document.addEventListener("DOMContentLoaded", () => {
     updateCart();
 });
