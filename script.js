@@ -1,11 +1,10 @@
 const paintings = [
     { id: 1, name: "Painting 1", price: 100, image: "https://via.placeholder.com/200" },
     { id: 2, name: "Painting 2", price: 150, image: "https://via.placeholder.com/200" },
-    { id: 3, name: "Painting 3", price: 200, image: "https://via.placeholder.com/200" },
 ];
 
 let selectedPainting = null;
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Open modal
 function openModal(id) {
@@ -28,6 +27,7 @@ function openModal(id) {
         onApprove: (data, actions) => {
             return actions.order.capture().then(details => {
                 alert(`Transaction completed by ${details.payer.name.given_name}`);
+                addToCart();
                 closeModal();
             });
         },
@@ -41,35 +41,23 @@ function closeModal() {
 }
 
 // Add to cart
-function addToCart(id) {
-    const paintings = [
-        { id: 1, name: "Painting 1", price: 100 },
-        { id: 2, name: "Painting 2", price: 150 },
-        { id: 3, name: "Painting 3", price: 200 },
-    ];
-    const painting = paintings.find(p => p.id === id);
-    cart.push(painting);
-    document.getElementById("cart-count").textContent = cart.length;
-    alert(`${painting.name} added to cart!`);
-
-    // Save cart in localStorage
+function addToCart() {
+    cart.push(selectedPainting);
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+    alert(`${selectedPainting.name} added to cart!`);
 }
 
 // Update cart UI
 function updateCart() {
-    const cartElement = document.getElementById("cart");
-    cartElement.innerHTML = `Cart: ${cart.length} item(s)`;
-    cartElement.classList.add("visible");
+    const cartElement = document.getElementById("cart-count");
+    cartElement.textContent = cart.length;
+    if (cart.length > 0) {
+        document.querySelector("#cart-icon").classList.add("visible");
+    }
 }
 
-// Initialize cart
+// Initialize cart on page load
 document.addEventListener("DOMContentLoaded", () => {
-    const cartElement = document.createElement("div");
-    cartElement.id = "cart";
-    cartElement.className = "cart";
-    cartElement.textContent = "Cart: 0 item(s)";
-    document.body.appendChild(cartElement);
+    updateCart();
 });
-
-
