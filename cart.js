@@ -1,19 +1,28 @@
-let cart = [];
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsDiv = document.getElementById("cart-items");
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Add item to cart
-function addToCart(id) {
-    const paintings = [
-        { id: 1, name: "Painting 1", price: 100 },
-        { id: 2, name: "Painting 2", price: 150 },
-    ];
-    const painting = paintings.find(p => p.id === id);
-    cart.push(painting);
+    // Display cart items
+    cart.forEach(item => {
+        const itemDiv = document.createElement("div");
+        itemDiv.textContent = `${item.name} - €${item.price}`;
+        cartItemsDiv.appendChild(itemDiv);
+    });
 
-    // Update cart count
-    document.getElementById("cart-count").textContent = cart.length;
-
-    // Save cart to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    alert(`${painting.name} added to cart!`);
-}
+    // Render PayPal button
+    paypal.Buttons({
+        createOrder: (data, actions) => {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            return actions.order.create({
+                purchase_units: [{ amount: { value: total.toString() } }],
+            });
+        },
+        onApprove: (data, actions) => {
+            return actions.order.capture().then(details => {
+                alert(`Transaction completed by ${details.payer.name.given_name}`);
+                localStorage.removeItem("cart");
+                window.location.href = "index.html";
+            });
+        },
+    }).render("#paypal-button-container");
+});
