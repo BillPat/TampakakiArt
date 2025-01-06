@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Gallery</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR"></script>
 </head>
 <body>
     <!-- Navigation Menu -->
@@ -19,22 +20,17 @@
     <!-- About Section -->
     <section id="about" class="section about">
         <h1>About the Artist</h1>
-        <p>
-            Welcome to my art gallery! I am a passionate artist who loves to bring colors and stories to life through my work. 
-            My journey in art spans over a decade, with numerous exhibitions and awards.
-        </p>
+        <p>Welcome to my art gallery! I am a passionate artist who loves to bring colors and stories to life through my work.</p>
     </section>
 
     <!-- Exhibitions Section -->
     <section id="exhibitions" class="section exhibitions">
         <h1>Exhibitions</h1>
-        <p>
-            Here are some of the highlights from my exhibitions:
-        </p>
+        <p>Highlights from my exhibitions:</p>
         <ul>
             <li><strong>Art Expo 2023:</strong> Featured artist.</li>
-            <li><strong>National Art Awards:</strong> Winner of the Best Contemporary Art category.</li>
-            <li><strong>City Art Showcase:</strong> A collection of my best works displayed in the city gallery.</li>
+            <li><strong>National Art Awards:</strong> Winner of Best Contemporary Art.</li>
+            <li><strong>City Art Showcase:</strong> Best works displayed in the city gallery.</li>
         </ul>
     </section>
 
@@ -42,18 +38,32 @@
     <section id="paintings" class="section paintings">
         <h1>Paintings</h1>
         <div class="gallery">
+            <!-- Painting 1 -->
             <div class="painting">
                 <img src="https://via.placeholder.com/200" alt="Painting 1">
-                <p>Painting 1</p>
+                <p>Painting 1 - €100</p>
+                <div id="paypal-button-1"></div>
             </div>
+            <!-- Painting 2 -->
             <div class="painting">
                 <img src="https://via.placeholder.com/200" alt="Painting 2">
-                <p>Painting 2</p>
+                <p>Painting 2 - €150</p>
+                <div id="paypal-button-2"></div>
             </div>
+            <!-- Painting 3 -->
             <div class="painting">
                 <img src="https://via.placeholder.com/200" alt="Painting 3">
-                <p>Painting 3</p>
+                <p>Painting 3 - €200</p>
+                <div id="paypal-button-3"></div>
             </div>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: €<span id="cart-total">0</span></p>
+            <div id="paypal-button-cart"></div>
         </div>
     </section>
 
