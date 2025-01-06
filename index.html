@@ -6,7 +6,6 @@
     <title>Art Gallery</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR"></script>
 </head>
 <body>
     <!-- Navigation Menu -->
@@ -16,10 +15,10 @@
             <li><a href="#exhibitions">Exhibitions</a></li>
             <li><a href="#paintings">Paintings</a></li>
         </ul>
-        <div id="cart-icon" class="cart">
+        <div id="cart-icon">
             <a href="cart.html">
-                <img src="https://via.placeholder.com/30" alt="Cart" />
-                <span class="count" id="cart-count">0</span>
+                <img src="https://via.placeholder.com/40" alt="Cart" title="View Cart">
+                <span id="cart-count">0</span>
             </a>
         </div>
     </nav>
@@ -43,26 +42,15 @@
     <section id="paintings" class="section paintings">
         <h1>Paintings</h1>
         <div class="gallery">
-            <div class="painting" onclick="openModal(1)">
+            <div class="painting" onclick="addToCart(1)">
                 <img src="https://via.placeholder.com/200" alt="Painting 1">
                 <p>Painting 1 - €100</p>
             </div>
-            <div class="painting" onclick="openModal(2)">
+            <div class="painting" onclick="addToCart(2)">
                 <img src="https://via.placeholder.com/200" alt="Painting 2">
                 <p>Painting 2 - €150</p>
             </div>
         </div>
     </section>
-
-    <!-- Modal for Payment -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">×</span>
-            <img id="modal-image" src="" alt="Painting">
-            <p id="modal-description"></p>
-            <button onclick="addToCart()">Add to Cart</button>
-            <div id="paypal-button-modal"></div>
-        </div>
-    </div>
 </body>
 </html>
