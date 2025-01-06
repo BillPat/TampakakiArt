@@ -16,10 +16,10 @@
             <li><a href="#exhibitions">Exhibitions</a></li>
             <li><a href="#paintings">Paintings</a></li>
         </ul>
-        <div id="cart-icon">
+        <div id="cart-icon" class="cart">
             <a href="cart.html">
-                <img src="https://via.placeholder.com/40" alt="Cart" title="View Cart">
-                <span id="cart-count">0</span>
+                <img src="https://via.placeholder.com/30" alt="Cart" />
+                <span class="count" id="cart-count">0</span>
             </a>
         </div>
     </nav>
@@ -27,17 +27,15 @@
     <!-- About Section -->
     <section id="about" class="section about">
         <h1>About the Artist</h1>
-        <p>Welcome to my art gallery! I am a passionate artist who loves to bring colors and stories to life through my work.</p>
+        <p>Welcome to my art gallery! I am a passionate artist...</p>
     </section>
 
     <!-- Exhibitions Section -->
     <section id="exhibitions" class="section exhibitions">
         <h1>Exhibitions</h1>
-        <p>Highlights from my exhibitions:</p>
         <ul>
             <li><strong>Art Expo 2023:</strong> Featured artist.</li>
             <li><strong>National Art Awards:</strong> Winner of Best Contemporary Art.</li>
-            <li><strong>City Art Showcase:</strong> Best works displayed in the city gallery.</li>
         </ul>
     </section>
 
@@ -45,22 +43,26 @@
     <section id="paintings" class="section paintings">
         <h1>Paintings</h1>
         <div class="gallery">
-            <!-- Painting 1 -->
-            <div class="painting" onclick="addToCart(1)">
+            <div class="painting" onclick="openModal(1)">
                 <img src="https://via.placeholder.com/200" alt="Painting 1">
                 <p>Painting 1 - €100</p>
             </div>
-            <!-- Painting 2 -->
-            <div class="painting" onclick="addToCart(2)">
+            <div class="painting" onclick="openModal(2)">
                 <img src="https://via.placeholder.com/200" alt="Painting 2">
                 <p>Painting 2 - €150</p>
             </div>
-            <!-- Painting 3 -->
-            <div class="painting" onclick="addToCart(3)">
-                <img src="https://via.placeholder.com/200" alt="Painting 3">
-                <p>Painting 3 - €200</p>
-            </div>
         </div>
     </section>
+
+    <!-- Modal for Payment -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <img id="modal-image" src="" alt="Painting">
+            <p id="modal-description"></p>
+            <button onclick="addToCart()">Add to Cart</button>
+            <div id="paypal-button-modal"></div>
+        </div>
+    </div>
 </body>
 </html>
