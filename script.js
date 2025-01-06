@@ -5,6 +5,7 @@ const paintings = [
 ];
 
 let selectedPainting = null;
+let cart = [];
 
 // Open modal
 function openModal(id) {
@@ -39,9 +40,26 @@ function closeModal() {
     document.getElementById("paypal-button-modal").innerHTML = ""; // Remove old PayPal button
 }
 
-// Add to cart (example functionality)
+// Add to cart
 function addToCart() {
+    cart.push(selectedPainting);
+    updateCart();
     alert(`${selectedPainting.name} added to cart!`);
     closeModal();
 }
 
+// Update cart UI
+function updateCart() {
+    const cartElement = document.getElementById("cart");
+    cartElement.innerHTML = `Cart: ${cart.length} item(s)`;
+    cartElement.classList.add("visible");
+}
+
+// Initialize cart
+document.addEventListener("DOMContentLoaded", () => {
+    const cartElement = document.createElement("div");
+    cartElement.id = "cart";
+    cartElement.className = "cart";
+    cartElement.textContent = "Cart: 0 item(s)";
+    document.body.appendChild(cartElement);
+});
