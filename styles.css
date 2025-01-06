@@ -11,7 +11,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #333;
+    background: #333;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -20,10 +20,11 @@ body {
 }
 
 .navbar ul {
-    list-style: none;
+    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
 }
 
 .navbar ul li {
@@ -42,6 +43,7 @@ body {
     color: #f39c12;
 }
 
+/* Cart Icon */
 #cart-icon {
     position: relative;
 }
@@ -74,6 +76,11 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.painting {
+    cursor: pointer;
+    text-align: center;
 }
 
 .painting img {
