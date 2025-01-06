@@ -3,142 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Art Gallery του καλλιτέχνη">
     <title>Art Gallery</title>
-    <style>
-        /* Στυλ Σώματος και Επικεφαλίδας */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-        }
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        header nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        header nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        header nav a:hover {
-            background-color: #555;
-            border-radius: 5px;
-        }
-
-        /* Ενότητες Σελίδας */
-        section {
-            padding: 60px 20px;
-            margin-top: 50px;
-        }
-        #about {
-            background-color: #fff;
-            text-align: center;
-        }
-        #exhibitions, #gallery {
-            background-color: #eaeaea;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        p {
-            max-width: 800px;
-            margin: 10px auto;
-            text-align: center;
-        }
-
-        /* Γκαλερί Εικόνων */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
-        .gallery img {
-            max-width: 100%;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#about">Σχετικά</a>
-            <a href="#exhibitions">Εκθέσεις</a>
-            <a href="#gallery">Πίνακες</a>
-        </nav>
-    </header>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#exhibitions">Exhibitions</a></li>
+            <li><a href="#paintings">Paintings</a></li>
+        </ul>
+    </nav>
 
-    <section id="about">
-        <h2>Σχετικά με τον Καλλιτέχνη</h2>
-        <p>Ο [Όνομα Καλλιτέχνη] είναι γνωστός για τα μοναδικά έργα του που αναδεικνύουν τη βαθιά του καλλιτεχνική ευαισθησία.</p>
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <h1>About the Artist</h1>
+        <p>
+            Welcome to my art gallery! I am a passionate artist who loves to bring colors and stories to life through my work. 
+            My journey in art spans over a decade, with numerous exhibitions and awards.
+        </p>
     </section>
 
-    <section id="exhibitions">
-        <h2>Πρόσφατες Εκθέσεις</h2>
+    <!-- Exhibitions Section -->
+    <section id="exhibitions" class="section exhibitions">
+        <h1>Exhibitions</h1>
+        <p>
+            Here are some of the highlights from my exhibitions:
+        </p>
+        <ul>
+            <li><strong>Art Expo 2023:</strong> Featured artist.</li>
+            <li><strong>National Art Awards:</strong> Winner of the Best Contemporary Art category.</li>
+            <li><strong>City Art Showcase:</strong> A collection of my best works displayed in the city gallery.</li>
+        </ul>
+    </section>
+
+    <!-- Paintings Section -->
+    <section id="paintings" class="section paintings">
+        <h1>Paintings</h1>
         <div class="gallery">
-            <img src="exhibition1.jpg" alt="Έκθεση 1">
-            <img src="exhibition2.jpg" alt="Έκθεση 2">
-            <img src="exhibition3.jpg" alt="Έκθεση 3">
+            <div class="painting">
+                <img src="https://via.placeholder.com/200" alt="Painting 1">
+                <p>Painting 1</p>
+            </div>
+            <div class="painting">
+                <img src="https://via.placeholder.com/200" alt="Painting 2">
+                <p>Painting 2</p>
+            </div>
+            <div class="painting">
+                <img src="https://via.placeholder.com/200" alt="Painting 3">
+                <p>Painting 3</p>
+            </div>
         </div>
     </section>
 
-    <section id="gallery">
-        <h2>Πίνακες</h2>
-        <div class="gallery">
-            <img src="painting1.jpg" alt="Πίνακας 1">
-            <img src="painting2.jpg" alt="Πίνακας 2">
-            <img src="painting3.jpg" alt="Πίνακας 3">
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Art Gallery. Όλα τα δικαιώματα διατηρούνται.</p>
-    </footer>
-
-    <script>
-        // Smooth Scroll για το μενού
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
