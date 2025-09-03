@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TampakakiArt - Modern Art Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR&enable-funding=venmo&disable-funding=credit,card"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">TampakakiArt</h1>
+                <nav class="nav">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Contemporary Art Collection</h2>
+                <p class="hero-description">Discover unique paintings that capture emotions, landscapes, and dreams through the lens of modern artistic expression.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Featured Paintings</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Paintings will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About TampakakiArt</h2>
+                <div class="about-text">
+                    <p>TampakakiArt represents a contemporary vision of artistic expression, where emotion meets canvas in a symphony of colors and forms. Our collection features original works that explore the depths of human experience through abstract and representational art.</p>
+                    <p>Each piece in our gallery is carefully crafted to evoke emotion and inspire contemplation, making art accessible to collectors and enthusiasts alike. We believe in the transformative power of art to connect people across cultures and experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Studio & Gallery</h4>
+                        <p>Visit us to view our complete collection and meet the artist behind these remarkable works.</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@tampakakiart.com">info@tampakakiart.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+301234567890">+30 123 456 789</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Make Offer Modal -->
+    <div class="modal hidden" id="offerModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Make an Offer</h3>
+                <button type="button" class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="offer-form" id="offerForm">
+                    <div class="form-group">
+                        <label for="paintingTitle" class="form-label">Painting</label>
+                        <input type="text" id="paintingTitle" name="paintingTitle" class="form-control" readonly>
+                        <input type="hidden" id="paintingId" name="paintingId">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerName" class="form-label">Your Name *</label>
+                        <input type="text" id="customerName" name="customerName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail" class="form-label">Email Address *</label>
+                        <input type="email" id="customerEmail" name="customerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="offerAmount" class="form-label">Offer Amount (€) *</label>
+                        <input type="number" id="offerAmount" name="offerAmount" class="form-control" min="1" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="offerMessage" class="form-label">Message (Optional)</label>
+                        <textarea id="offerMessage" name="offerMessage" class="form-control" rows="3" placeholder="Share your thoughts about this artwork..."></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--outline" id="cancelOffer">Cancel</button>
+                        <button type="submit" class="btn btn--primary" id="submitOffer">
+                            <span class="submit-text">Submit Offer</span>
+                            <span class="loading-text hidden">Submitting...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div class="message-container hidden" id="messageContainer">
+        <div class="message" id="messageContent"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TampakakiArt</h4>
+                    <p>Contemporary art that speaks to the soul</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>Follow our artistic journey and discover new works as they are created.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Inquiries</h4>
+                    <p>Custom commissions and gallery exhibitions welcome.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TampakakiArt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
