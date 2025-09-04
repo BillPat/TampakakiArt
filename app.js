@@ -95,7 +95,7 @@ class ArtGallery {
         try {
             if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
                 this.supabase = window.supabase.createClient(
-                    'https://vxadmopglcbjvwewqtyr.supabase.co',
+                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4YWRtb3BnbGNianZ3ZXdxdHlyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1Njg4MjgyNSwiZXhwIjoyMDcyNDU4ODI1fQ.R1uWe5-Ru1eIn-IP3GduPHwbH1f_cwbrIRcbMmXVwGY',
                     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4YWRtb3BnbGNianZ3ZXdxdHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4ODI4MjUsImV4cCI6MjA3MjQ1ODgyNX0.E5Yc5m6bOE2B7OHpoMHc4Z67tmdVatKGhD0yzu-3RUI'
                 );
                 console.log('Supabase initialized');
